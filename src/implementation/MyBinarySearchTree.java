@@ -1,7 +1,7 @@
 package implementation;
 
 import myinterface.BinarySearchTreeADT;
-import myinterface.Node;
+
 
 public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearchTreeADT<E> {
     //complete this class
@@ -9,15 +9,16 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
     public Boolean isempty(){
         return root==null;
     }
+
     @Override
     public void insert(E data) {
-        implementation.Node<E> n=new implementation.Node<>(data);
+        Node<E> n=new Node<>(data);
         if(isempty()){
             root=n;
         }
         else{
-            implementation.Node<E> temp=root;
-            implementation.Node<E> parent=null;
+            Node<E> temp=root;
+            Node<E> parent=null;
             while(temp!=null){
                 parent=temp;
                 if(data.compareTo(temp.getData())<=0){
@@ -50,7 +51,11 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
 
     @Override
     public void preOrder(Node<E> node) {
-
+        if(node!=null){
+            System.out.print(node.getData()+",");
+            preOrder(node.getLeft());
+            preOrder(node.getRight());
+        }
     }
 
     @Override
