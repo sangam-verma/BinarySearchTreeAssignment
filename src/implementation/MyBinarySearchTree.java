@@ -46,7 +46,11 @@ public class MyBinarySearchTree<E extends Comparable<E>> implements BinarySearch
 
     @Override
     public void inOrder(Node<E> node) {
-
+        if(node!=null){
+            preOrder(node.getLeft());
+            System.out.println(node.getData()+",");
+            preOrder(node.getRight());
+        }
     }
 
     @Override
